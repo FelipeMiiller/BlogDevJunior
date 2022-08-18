@@ -80,8 +80,7 @@ export default function PostPage() {
    
     
   return (
-    <div className={" flex flex-col min-h-screen" + " bg-defealt bg-repeat "}>
-      <Header />
+   
 
       <main className={"flex flex-1"}>
       {data?.post ? (
@@ -90,7 +89,7 @@ export default function PostPage() {
             <div className={"flex items-center"}> {"zero " + slugGet}</div>
           )}
       </main>
-    </div>
+   
   );
 }
 

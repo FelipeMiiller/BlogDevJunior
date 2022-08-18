@@ -53,7 +53,7 @@ export function Post(props: PostProps ) {
   return (
     <div className={"flex-1"}>
      
-        <div className={"container mx-auto  py-4 h-full     mx-auto  "}>
+        <div className={"container mx-auto  py-4 h-full       "}>
           <div className={"flex flex-col gap-4 flex-1 px-60"}>
            
            
