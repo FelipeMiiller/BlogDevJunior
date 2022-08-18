@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import HomePage from './views/HomeTypes'
 import '../src/assets/Styles/index.css'
 import { ApolloProvider } from '@apollo/client'
 import { client } from './services/apollo'

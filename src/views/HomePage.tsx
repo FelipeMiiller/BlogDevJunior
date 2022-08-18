@@ -1,6 +1,6 @@
 import { gql,useQuery } from "@apollo/client"
 import { Route, Routes, useParams } from "react-router-dom"
-import Header from "../components/Header"
+
 
 
 import { HomePosts } from "../components/HomePosts"

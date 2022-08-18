@@ -1,5 +1,4 @@
 import { Route, Routes, useParams} from "react-router-dom";
-import HomeTypes from "./views/HomeTypes";
 import HomePage from "./views/HomePage";
 import PostPage from "./views/PostPage";
 import Header from "./components/Header";
