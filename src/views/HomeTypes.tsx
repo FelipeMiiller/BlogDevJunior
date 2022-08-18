@@ -1,10 +1,11 @@
 import { gql,useQuery } from "@apollo/client"
-import React from "react"
 import { useParams } from "react-router-dom"
-import Header from "./components/Header"
+import Header from "../components/Header"
 
-import { Sidebar } from "./components/Sidebar"
-import { RouterDom } from "./RouterDom"
+
+import { HomePosts } from "../components/HomePosts"
+
+import { Sidebar } from "../components/Sidebar"
 
 
 
@@ -30,13 +31,16 @@ query {
 }
 `
 
+interface HomeTypesPros {
+  slugGet: string;
+}
 
 
-
-function App() {
+export default function HomeTypes(props: HomeTypesPros) {
   const { data } = useQuery(GET_POSTS_QUERY);
- 
+  const {slugGet } = useParams<{ slugGet: string }>()
 
+  
 
   return (
     <div className={"flex flex-col min-h-screen" + " bg-defealt bg-repeat "}>
@@ -45,11 +49,11 @@ function App() {
       <main className={"flex flex-1"}>
         <Sidebar />
 
-        <RouterDom />
+        <HomePosts slugGet={slugGet} />
         
       </main>
     </div>
   );
 }
 
-export default App
+

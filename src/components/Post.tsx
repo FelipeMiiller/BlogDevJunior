@@ -1,121 +1,106 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { format} from "date-fns";
+import ptBR from 'date-fns/locale/pt-BR'
 import { gql, useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 
+interface PostProps {
+  
+  post:{
+    publishedAt: string;
+    title: string;
+    slug: string;
+    category: {
+      nameCategory: string;
+    }[];
+    subCategory: {
+      nameSubCategory: string;
+    }[];
 
+    tagss: [string];
+    updatedAt: string;
 
-const GET_POST_BY_SLUG_QUERY = gql`
-query GetPostBySlug($slug: String) {
-  post(where: {slug: $slug}) {
-    id
-    publishedAt
-    title
-    category {
-      ... on Category {
-        nameCategory
-      }
-    }
-    subCategory {
-      ... on SubCategory {
-        nameSubCategory
-      }
-    }
-    tagss
-    updatedAt
-    bodyPosts {
-      subTitle
-      text {
-        html
-      }
-    }
-    authors {
-      createdAt
-      name
-      picture {
-        url(transformation: {image: {}, document: {output: {format: jpg}}})
-      }
-      intro
-      slug
-    }
+    authors: {
+      createdAt: string;
+      name: string;
+      picture: { url: string };
+      intro: string;
+      slug: string;
+    }[];
+    content: string;
   }
 }
-`
-
-
-export function Post() {
-  const {slugGet } = useParams<{ slugGet: string }>()
 
 
 
-const { data } = useQuery( GET_POST_BY_SLUG_QUERY,{
-  variables: { 
-  slug: slugGet,
-
-  }
-} );
-
-//console.log(props.postSlug)
-console.log(data)
-console.log(slugGet)
 
 
-    return (
 
-      <div className={"flex-1"}>
-        
-{slugGet ? (
-    
-        <div className={" " + "bg-black "}>
-          <div
-            className={
-              "" + " h-full w-full   max-w-full mx-auto  text-white   "
-            }
-          >
-             <div className={ "flex items-start gap-16 " }>
+export function Post(props: PostProps ) {
 
-             <div className={ "flex-1 " }>
-              <h1 className={"text-4xl font-bold"}>
-gfdgdfgsdfghghfgjhdfhfghdfghdfgh
-              </h1>
+  let publishedAtFormat = format((new Date(props.post.publishedAt)), " d' de 'MMMM' • 'yyyy' • 'k'h'mm", {
+    locale: ptBR,
+  })
+
+  console.log(props.post)
+ 
+ console.log(publishedAtFormat)
+ 
+
+  return (
+    <div className={"flex-1"}>
+     
+        <div className={"container mx-auto  py-4 h-full     mx-auto  "}>
+          <div className={"flex flex-col gap-4 flex-1 px-60"}>
            
-
            
+           
+           
+            <div className={" py-3 "}>
+              <h1 className={"text-4xl font-bold"}>{props.post.title}</h1>
+              <p className={"m-1"}>{"Postado em :" + publishedAtFormat} </p>
 
-
-
+              <Link to={`posts/${props.post.category[0].nameCategory}`}>
+              <span className={"py-[0.125rem] p-2 rounded m-2 " +  " text-white border bg-[#1890ff] font-bold"}>
+           {props.post.category[0].nameCategory}
+          </span>
+          </Link>
+          <Link to={`posts/${props.post.category[0].nameCategory}`}>
+          <span className={"py-[0.125rem] p-2 rounded m-2 " +  " text-white border bg-[#1890ff] font-bold"}>
+           {props.post.subCategory[0].nameSubCategory}
+          </span>
+          </Link>
+            </div>
 
             
-            </div>
+              <article className="mt-8 prose prose-slate mx-auto lg:prose-lg">
+                <ReactMarkdown
+                  children={props.post?.content}
+                  remarkPlugins={[remarkGfm]}
+                />
+              </article>
+        
+
+
+           <div className={"pt-2"}>
+           
 
 
 
-
-
-
-            <div>
-              <h2 className={"text-2xl "}>
-
-
-              </h2>
-              
-
-
-
-
-
-
-
-
-            </div>
-            </div>
+           </div>
 
           </div>
         </div>
-        ) : (
-          <div className={"flex items-center"}>  {"zero "+ slugGet}</div>
-        )}
-      </div>
-    );
-  }
-  
+
+
+
+
+
+
+     
+    </div>
+  );
+}

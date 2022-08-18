@@ -27,12 +27,14 @@ const publishedAtFormat = format(props.publishedAt, "EEEEEE' â€¢ 'd' de 'MMMM' â
 
 
   return (
-    <Link to={`/${props.slug}`} className={"group"}>
+
+    
+    <Link to={`post/${props.slug}`} className={"hover:-translate-y-1  hover:border-green-500" + " group"}>
       <span className={ " pl-3 " + " text-gray-300  " }>
         {publishedAtFormat}
       </span>
 
-      <div className={"rounded border border-gray-500 p-4 mt-2  group-hover:border-green-500"}>
+      <div className={"rounded border border-gray-500 p-4 mt-2  group-hover:border-green-500  group-hover:drop-shadow-2xl "}>
         <header className={"flex  items-center justify-between"}>
           <span className={"text-sm text-blue-500 font-medium"}>
           {props.subCategory}
@@ -42,11 +44,13 @@ const publishedAtFormat = format(props.publishedAt, "EEEEEE' â€¢ 'd' de 'MMMM' â
            {props.category}
           </span>
         </header>
-
+        
         <strong className={ "text-gray-200 mt-5 block " }>
          {props.titlePost}
         </strong>
+       
       </div>
-    </Link>
+      </Link>
+    
   );
 }
