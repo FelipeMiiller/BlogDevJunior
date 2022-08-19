@@ -34,6 +34,9 @@ const GET_POST_BY_SLUG_QUERY = gql`
       }
       slug
       content
+      coverImage {
+        url
+      }
     }
   }
 `;
@@ -62,11 +65,16 @@ interface GetPostBySlugQueryResponse {
     }[];
 
     content: string;
+    coverImage: {
+      url: string;
+    };
   };
 }
 
 export default function PostPage() {
     const { slugGet } = useParams<{ slugGet: string }>();
+
+    console.log(slugGet)
   
     const { data } = useQuery<GetPostBySlugQueryResponse>(
       GET_POST_BY_SLUG_QUERY,
@@ -77,19 +85,18 @@ export default function PostPage() {
       }
     );
  
-   
+    console.log(data?.post.coverImage.url)
+  
     
   return (
-   
-
-      <main className={"flex flex-1"}>
+    <main className={"flex flex-1"}>
+     
       {data?.post ? (
-        <Post post={data?.post}/>
-        ) : (
-            <div className={"flex items-center"}> {"zero " + slugGet}</div>
-          )}
-      </main>
-   
+        <Post post={data?.post} />
+      ) : (
+        <div className={"flex items-center"}> {"zero " + slugGet}</div>
+      )}
+    </main>
   );
 }
 

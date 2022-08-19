@@ -1,10 +1,11 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Header() {
   return (
+    <>
     <header
       className={
         " w-full py-5 flex justify-between " +
@@ -18,9 +19,12 @@ export default function Header() {
             " pl-4  "
           }
         >
-          Developer Br
+          Developer Blog
         </h1>
       </Link>
+
     </header>
+    <Outlet />
+    </>
   );
 }

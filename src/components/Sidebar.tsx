@@ -46,7 +46,7 @@ interface GetPostsSidebarQueryResponse {
 export function Sidebar() {
   const { data } = useQuery<GetPostsSidebarQueryResponse>(GET_POSTS_SIDEBAR_QUERY);
 
-  console.log(data);
+ 
 
   return (
     <aside

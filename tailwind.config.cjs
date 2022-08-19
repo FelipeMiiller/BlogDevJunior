@@ -7,6 +7,7 @@ module.exports = {
         roboto: ["Roboto", "sans-serif"],
       },
       colors: {
+        
         green: {
           300: "#00B37E",
           500: "#00875F",
@@ -32,9 +33,16 @@ module.exports = {
         },
       },
       backgroundImage: {
-        //defealt: "url('./src/assets/image/background.jpg')",
+      defealt: "url('./src/assets/image/back.png')",
       },
     },
   },
-  plugins: [ require('@tailwindcss/typography'),],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+    require('@tailwindcss/line-clamp'),
+  ],
 };

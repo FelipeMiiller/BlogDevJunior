@@ -19,7 +19,7 @@ export function RouterDom() {
         <Header />
         <Routes>
           <Route path="/*" element={<HomePage />} />
-          <Route path="posts/:slugGet" element={<HomePage />} />
+       
           <Route path="post/:slugGet" element={<PostPage />} />
         </Routes>
       </div>

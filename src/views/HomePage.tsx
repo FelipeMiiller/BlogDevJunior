@@ -1,11 +1,16 @@
 import { gql,useQuery } from "@apollo/client"
+import Particles from "react-particles-js"
 import { Route, Routes, useParams } from "react-router-dom"
-
-
-
+import Header from "../components/Header"
 import { HomePosts } from "../components/HomePosts"
 
+
+import { HomePostsSlug } from "../components/HomePostsSlug"
+
 import { Sidebar } from "../components/Sidebar"
+
+
+
 
 
 
@@ -42,17 +47,24 @@ export default function HomePage() {
   return (
    
 
-      <main className={"flex flex-1"}>
+      <div className={"flex flex-  "}>
         <Sidebar />
-        <Routes>
 
-        <Route path="/Posts/:slugGet" element={
-        <HomePosts />}
+
+        <Routes>
+        
+
+
+        <Route path="/" element={
+        <HomePosts/>}
+         />
+        <Route path="posts/:slugGet" element={
+        <HomePostsSlug/>}
          />
 
         
         </Routes>
-      </main>
+      </div>
     
   );
 }
