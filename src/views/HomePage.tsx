@@ -1,72 +1,49 @@
-import { gql,useQuery } from "@apollo/client"
-import Particles from "react-particles-js"
-import { Route, Routes, useParams } from "react-router-dom"
-import Header from "../components/Header"
-import { HomePosts } from "../components/HomePosts"
+import { gql, useQuery } from "@apollo/client";
+import Particles from "react-particles-js";
+import { Route, Routes, useParams } from "react-router-dom";
+import { Author } from "../components/author";
+import Header from "../components/Header";
+import { HomeAuthors } from "../components/HomeAuthors";
+import { HomePosts } from "../components/HomePosts";
 
+import { HomePostsSlug } from "../components/HomePostsSlug";
 
-import { HomePostsSlug } from "../components/HomePostsSlug"
-
-import { Sidebar } from "../components/Sidebar"
-
-
-
-
-
-
+import { Sidebar } from "../components/Sidebar";
 
 const GET_POSTS_QUERY = gql`
-query {
-  posts(orderBy: publishedAt_ASC, stage: PUBLISHED) {
-    title
-    categories {
-      ... on Category {
-        id
-        category
+  query {
+    posts(orderBy: publishedAt_ASC, stage: PUBLISHED) {
+      title
+      categories {
+        ... on Category {
+          id
+          category
+        }
       }
-    }
-    id
-    subCategory {
-      ... on SubCategory {
-        subCategories
+      id
+      subCategory {
+        ... on SubCategory {
+          subCategories
+        }
       }
+      slug
     }
-    slug
   }
-}
-`
-
-
-
+`;
 
 export default function HomePage() {
   const { data } = useQuery(GET_POSTS_QUERY);
- 
- 
 
   return (
-   
+    <div className={"flex flex-     "}>
+      <Sidebar />
 
-      <div className={"flex flex-  "}>
-        <Sidebar />
-
-
-        <Routes>
-        
-
-
-        <Route path="/" element={
-        <HomePosts/>}
-         />
-        <Route path="posts/:slugGet" element={
-        <HomePostsSlug/>}
-         />
-
-        
-        </Routes>
-      </div>
-    
+      <Routes>
+        <Route path="/" element={<HomePosts />} />
+        <Route path="posts/:slugGet" element={<HomePostsSlug />} />
+        <Route path="authors" element={<HomeAuthors />} />
+        <Route path="author/:slugGet" element={<Author />} />
+      </Routes>
+    </div>
   );
 }
-
-

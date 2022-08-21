@@ -9,10 +9,12 @@ import ptBR from "date-fns/locale/pt-BR";
 const GET_HOME_POSTS_QUERY = gql`
   query {
     posts(orderBy: publishedAt_DESC, stage: PUBLISHED) {
+      
       id
       title
       slug
       publishedAt
+      updatedAt
       category {
         ... on Category {
           nameCategory
@@ -46,6 +48,7 @@ interface GetHomePostsQueryResponse {
     tagss: [string];
     slug: string;
     publishedAt: Date;
+    updatedAt: Date;
     resume: string;
     coverImage: { url: string };
     category: { nameCategory: string }[];
@@ -65,34 +68,33 @@ export function HomePosts() {
 
 
 
-
-  console.log(data);
-
   return (
     <>
     
-    <main  className={"flex flex-1 flex-col items-center  m-2 "}>
+    <main  className={"flex flex-1 flex-col items-center  m-2 " + 
+    "  h-[53.5rem] overflow-y-auto"}>
       
       {data?.posts.map((post) => {
 
 
         let publishedAtFormat = format(new Date(post.publishedAt),
           " d'/'MM'/'yyyy' • 'k'h'mm");
+        
 
 
 
         return (
           <div key={post.id}
             className={
-              "grid grid-rows-3 grid-flow-col  h-52 w-[50rem]  m-2  p-2 " +
+              "grid grid-rows-3 grid-flow-col   w-[50rem]  m-2  p-2 " +
               "  bg-gray-600 border-2 rounded-lg  border-gray-600     " +
-              " transition ease-in-out delay-150 b hover:-translate-y-1 hover:scale-110 hover:border-[#40a9ff]  duration-300"
+              " transition ease-in-out delay-150 b hover:-translate-y-1 hover:scale-110 hover:border-blue-600  duration-300"
             }
           >
             <div className={"row-span-3 col-span-1   h-full  m-4 " + ""}>
             <Link  to={`post/${post.slug}`}>
               <img
-                className="border-2 rounded-lg border-[#40a9ff]  "
+                className="border-2 rounded-lg border-blue-600  "
                 src={post.coverImage.url}
               />
                </Link>
@@ -104,7 +106,8 @@ export function HomePosts() {
                 {post.title}
               </h2>
               </Link>
-              <p className={"m-1 text-xs text-gray-200"}>{"Postado em :" + publishedAtFormat} </p>
+              <p className={"m-1 text-xs text-gray-200"}>
+              {"Postado em :" + publishedAtFormat }      </p>
              
            
 

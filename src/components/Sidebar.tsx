@@ -51,19 +51,21 @@ export function Sidebar() {
   return (
     <aside
       className={
-        "w-[348px] p-6 border-r " + " bg-gray-600 text-white"
+        "w-[21.7rem]   pl-4 pt-4 " + " bg-gray-600 text-white  border-r0 border-gray-400" 
+        + ""
       }
     >
-      <div  className={"w-[322px] overflow-y-auto h-[88%]"}>
+      <div  className={"  "    }>
       <span
         className={
-          "fonte-bold text-2xl  hover:font-bold" +  " block pb-6 mb-6 border-b border-gray-500  "
+          "fonte-bold text-2xl  hover:font-bold" +  " block pb-6 mb-6  border-b border-gray-400 "
+         
         }
       >
-        Posts Novos
+        Posts 
       </span>
 
-      <div className="flex flex-col gap-8">
+      <div className={"flex flex-col space-y-8 " + "  h-[48rem] overflow-y-auto "}>
         {data?.posts.map((posts) => {
           return (
             <PostSidebar

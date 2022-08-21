@@ -7,7 +7,7 @@ module.exports = {
         roboto: ["Roboto", "sans-serif"],
       },
       colors: {
-        
+        defealt:{ 100: "#0E141B",},
         green: {
           300: "#00B37E",
           500: "#00875F",
@@ -27,13 +27,14 @@ module.exports = {
           200: "#C4C4CC",
           300: "#8D8D99",
           500: "#323238",
-          600: "#29292E",
+          600: "#303841",
           700: "#121214",
           900: "#09090A",
         },
       },
+      
       backgroundImage: {
-      defealt: "url('./src/assets/image/back.png')",
+      //defealt: "url('./src/assets/image/back.png')",
       },
     },
   },

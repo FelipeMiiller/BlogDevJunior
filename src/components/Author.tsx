@@ -35,7 +35,7 @@ interface PostProps {
   };
 }
 
-export function Post(props: PostProps) {
+export function Author(props: PostProps) {
   let publishedAtFormat = format(
     new Date(props.post.publishedAt),
     " d' de 'MMMM' • 'yyyy' • 'k'h'mm",

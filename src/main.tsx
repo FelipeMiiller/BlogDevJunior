@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-      <RouterDom />
+      <RouterDom  />
       </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>
