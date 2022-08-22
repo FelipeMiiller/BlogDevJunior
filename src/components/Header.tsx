@@ -39,7 +39,7 @@ export default function Header() {
 
 
 
- console.log(data)
+ //console.log(data)
 
 
 

@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 import { format } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
+
 
 
 
@@ -80,7 +80,7 @@ return (
     }
   >
     <div className={"row-span-3 col-span-1   h-full  m-4 " + ""}>
-      <Link to={`post/${authors.slug}`}>
+      <Link to={`../author/${authors.slug}`}>
         <img
           className="border-2 rounded-lg border-blue-600 h-40  "
           src={authors.picture.url}
@@ -89,7 +89,7 @@ return (
     </div>
 
     <div className={"row-span-1 col-span-2  mt-1 " + " text-white "}>
-      <Link to={`post/${authors.slug}`}>
+      <Link to={`../author/${authors.slug}`}>
         <h2
           className={
             "text-gray-200  hover:underline " +
@@ -119,15 +119,15 @@ return (
         <h2>Posts Recentes</h2>
 
 
-      <Link to={`author/${authors?.post[0]?.slug}`}>
+      <Link to={`../post/${authors?.post[0]?.slug}`}>
       
         <p className={"text-xs text-gray-200  hover:underline py-1"}>{authors.post[0]?.title}</p>
       </Link>
-      <Link to={`author/${authors?.post[1]?.slug}`}>
+      <Link to={`../post/${authors?.post[1]?.slug}`}>
       
         <p className={"text-xs text-gray-200   hover:underline py-1"}>{authors.post[1]?.title}</p>
       </Link>
-      <Link to={`author/${authors?.post[2]?.slug}`}>
+      <Link to={`../post/${authors?.post[2]?.slug}`}>
       
         <p className={"text-xs text-gray-200  hover:underline py-1"}>{authors.post[2]?.title}</p>
       </Link>
