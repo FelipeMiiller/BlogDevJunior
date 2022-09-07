@@ -16,15 +16,20 @@ export default function HomePage() {
  
 
   return (
-    <div className={"flex flex-     "}>
+    <div className={"w-screen h-screen overflow-hidden  flex flex-col  " + " bg-defealt-100 "}>
+     
+        <Header />
+    <div className={"flex  h-full  w-full  "}>
       <Sidebar />
-
+      
       <Routes>
+       
         <Route path="/" element={<HomePosts />} />
         <Route path="posts/:slugGet" element={<HomePostsSlug />} />
         <Route path="authors" element={<HomeAuthors />} />
-       
+        
       </Routes>
-    </div>
+      </div>
+      </div>
   );
 }

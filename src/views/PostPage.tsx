@@ -1,5 +1,6 @@
 import { gql,useQuery } from "@apollo/client"
 import { useParams } from "react-router-dom";
+import FooterPost from "../components/Footer";
 import Header from "../components/Header"
 import { Post } from "../components/Post";
 
@@ -89,14 +90,17 @@ export default function PostPage() {
   
     
   return (
-    <main className={"flex flex-1"}>
+    <div className={"w-full h-screen overflow-hidden  flex flex-col   " + " bg-defealt-100 "}>
+    <Header />
+    
      
       {data?.post ? (
         <Post post={data?.post} />
       ) : (
         <div className={"flex items-center"}> {"zero " + slugGet}</div>
-      )}
-    </main>
+      )} 
+   
+    </div>
   );
 }
 

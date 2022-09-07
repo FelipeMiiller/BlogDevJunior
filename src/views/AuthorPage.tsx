@@ -2,6 +2,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { Author } from "../components/Author";
+import Header from "../components/Header";
 
 
 
@@ -78,13 +79,17 @@ export function AuthorPage() {
 
 
   return (
-    <main className={"grid grid-cols-12 gap-4  bg-white"}>
+    <div className={"w-full h-screen overflow-hidden  flex flex-col " + " bg-defealt-100 "}>
+    <Header />
+   
      
       {data?.author ? (
         <Author author={data?.author} />
       ) : (
-        <div className={"flex items-center"}> {"Author" + slugGet}</div>
+        <div className={"flex w-full  overflow-y-visible justify-center"}> {"Author" + slugGet}</div>
       )}
-    </main>
+ 
+
+    </div>
   );
 }

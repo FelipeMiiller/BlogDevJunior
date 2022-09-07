@@ -51,7 +51,7 @@ export function Sidebar() {
   return (
     <aside
       className={
-        "w-[21.7rem]   pl-4 pt-4 " + " bg-gray-600 text-white  border-r0 border-gray-400" 
+        "w-[22rem]     pl-4 pt-4 " + " bg-gray-600 text-white  border-r border-gray-400" 
         + ""
       }
     >
@@ -62,10 +62,10 @@ export function Sidebar() {
          
         }
       >
-        Posts 
+        Posts   
       </span>
 
-      <div className={"flex flex-col space-y-8 " + "  h-[48rem] overflow-y-auto "}>
+      <div className={"flex flex-col space-y-8 " + "  h-[30rem] overflow-y-auto "}>
         {data?.posts.map((posts) => {
           return (
             <PostSidebar

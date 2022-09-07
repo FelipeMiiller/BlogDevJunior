@@ -4,13 +4,15 @@ import { format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { gql, useQuery } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
+import FooterPost from "./Footer";
+import Footer from "./Footer";
 
 interface PostProps {
   post: {
     publishedAt: string;
     title: string;
     slug: string;
-    
+
     category: {
       nameCategory: string;
     }[];
@@ -44,70 +46,80 @@ export function Post(props: PostProps) {
     }
   );
 
-  let updatedAtFormat = format(new Date(props.post.updatedAt),
-  " d' de 'MMMM' • 'yyyy' • 'k'h'mm",
-  {
-    locale: ptBR,
-  }
-);
+  let updatedAtFormat = format(
+    new Date(props.post.updatedAt),
+    " d' de 'MMMM' • 'yyyy' • 'k'h'mm",
+    {
+      locale: ptBR,
+    }
+  );
 
- const dataUpdate =  updatedAtFormat ? "Atualizado em :" + updatedAtFormat : null
+  const dataUpdate = updatedAtFormat
+    ? "Atualizado em :" + updatedAtFormat
+    : null;
 
- console.log( updatedAtFormat)
- console.log( dataUpdate)
- console.log(  publishedAtFormat)
-
-
-
-
-
+  //console.log(updatedAtFormat);
+ // console.log(dataUpdate);
+  //console.log(publishedAtFormat);
 
   //console.log(props.post);
 
   //console.log(publishedAtFormat);
 
   return (
-    <div className={"flex-1 bg-white"}>
-      <div className={"container mx-auto  py-4 h-full       "}>
-        <div className={"flex flex-col gap-4 flex-1 px-60"}>
-          <div className={" py-3 "}>
-            <h1 className={"text-4xl font-bold"}>{props.post.title}</h1>
-            <p className={"m-1"}>{"Postado em :" + publishedAtFormat +" " + dataUpdate} </p>
+    <>
+      <div
+        className={
+          " flex flex-1 flex-col  w-full  h-[calc(100%_-_5rem)] overflow-y-auto " +
+          " bg-white"
+        }
+      >
+        <main className={"flex flex-1 justify-center" + " "}>
+          <article className={"flex flex-col w-[50rem]   py-4 h-auto       "}>
+            <div className={" py-3 "}>
+              <h1 className={"text-4xl font-bold"}>{props.post.title}</h1>
+              <p className={"m-1"}>
+                {"Postado em :" + publishedAtFormat + " " + dataUpdate}{" "}
+              </p>
 
-            <Link to={`../posts/${props.post.category[0].nameCategory}`}>
-              <span
-                className={
-                  "p-[0.250rem] rounded m-2 " +
-                  " text-white border bg-blue-600 font-bold "
-                }
+              <Link to={`../posts/${props.post.category[0].nameCategory}`}>
+                <span
+                  className={
+                    "p-[0.250rem] rounded m-2 " +
+                    " text-white border bg-blue-600 font-bold "
+                  }
+                >
+                  {props.post.category[0].nameCategory}
+                </span>
+              </Link>
+              <Link
+                to={`../posts/${props.post.subCategory[0].nameSubCategory}`}
               >
-                {props.post.category[0].nameCategory}
-              </span>
-            </Link>
-            <Link to={`../posts/${props.post.subCategory[0].nameSubCategory}`}>
-              <span
-                className={
-                  "py-[0.125rem] p-2 rounded m-2 " +
-                  " text-white border bg-[#1890ff] font-bold"
-                }
-              >
-                {props.post.subCategory[0].nameSubCategory}
-              </span>
-            </Link>
-          </div>
+                <span
+                  className={
+                    "py-[0.125rem] p-2 rounded m-2 " +
+                    " text-white border bg-[#1890ff] font-bold"
+                  }
+                >
+                  {props.post.subCategory[0].nameSubCategory}
+                </span>
+              </Link>
+            </div>
 
-          <article className="mt-8 prose prose-slate mx-auto lg:prose-lg">
-            <img className="object-cover " src={props.post.coverImage.url} />
+            <article className="mt-8 prose prose-slate mx-auto lg:prose-lg">
+              <img className="object-cover " src={props.post.coverImage.url} />
 
-            <ReactMarkdown
-              children={props.post?.content}
-              remarkPlugins={[remarkGfm]}
-            />
+              <ReactMarkdown
+                children={props.post?.content}
+                remarkPlugins={[remarkGfm]}
+              />
+            </article>
+
+            <hr className={"py-7  border-transparent "} />
           </article>
-
-          <div className={"pt-2"}></div>
-        </div>
+        </main>
+        <Footer />
       </div>
-    </div>
+    </>
   );
 }

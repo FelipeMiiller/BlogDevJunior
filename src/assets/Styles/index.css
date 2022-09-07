@@ -3,16 +3,15 @@
 @tailwind utilities;
 
 
-
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
 }
 
-body::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: rgb(141,141,153);        /* color of the tracking area */
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background-color: white;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid white;  /* creates padding around scroll thumb */
@@ -20,7 +19,7 @@ body::-webkit-scrollbar-thumb {
 
 
 body {
- 
+  overflow: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -42,3 +41,6 @@ body {
       rgba(61, 7, 196, 1) 100%
     );
   }
+
+
+
