@@ -51,7 +51,7 @@ export function Author(props: PostProps) {
       >
         <main className={"flex flex-1 justify-center" + " "}>
       
-    <article className={"flex flex-col w-[45rem] h-auto m-2  px-2 pt-4 mb-40   " + "  bg-white"}>
+    <article className={"flex flex-col w-[45rem] h-auto m-2  px-2 pt-4 mb-40   " + "  bg-stone-300  rounded"}>
       
      
       

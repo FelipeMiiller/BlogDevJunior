@@ -75,7 +75,7 @@ export function Post(props: PostProps) {
         }
       >
         <main className={"flex flex-1 justify-center" + " "}>
-          <article className={"flex flex-col w-[50rem]   py-4 h-auto       "}>
+          <article className={"flex flex-col w-[50rem]   h-auto    m-2  px-2 pt-4 mb-40    " + "   bg-stone-300 rounded"}>
             <div className={" py-3 "}>
               <h1 className={"text-4xl font-bold"}>{props.post.title}</h1>
               <p className={"m-1"}>
@@ -107,7 +107,7 @@ export function Post(props: PostProps) {
             </div>
 
             <article className="mt-8 prose prose-slate mx-auto lg:prose-lg">
-              <img className="object-cover " src={props.post.coverImage.url} />
+              <img className="object-cover rounded" src={props.post.coverImage.url} />
 
               <ReactMarkdown
                 children={props.post?.content}
